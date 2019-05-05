@@ -111,7 +111,7 @@ exampleNet =
                 OriginClientOnly
                 (constructor "GoToTwo" [])
                 [("FirstPlace", Just ("SecondPlace", constructor "WentToSecondPlace" []))
-                ,("SecondPlace", Nothing) --some people will stay
+                ,("FirstPlace", Nothing) --some people will stay
                 ]
                 Nothing
 
