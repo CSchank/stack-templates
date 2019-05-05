@@ -218,10 +218,9 @@ packages:
 # Dependency packages to be pulled from upstream that are not in the resolver
 # using the same syntax as the packages field.
 # (e.g., acme-missiles-0.3)
-# extra-deps:
-- location:
-    git: https://github.com/cschank/petri-app-land.git
-    commit: 248486dd2ccefc5e4e1626f477d5e273a54ff841
+extra-deps:
+- github: cschank/petri-app-land
+  commit: 248486dd2ccefc5e4e1626f477d5e273a54ff841
 
 # Override default flag values for local packages and extra-deps
 # flags: {}
