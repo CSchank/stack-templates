@@ -221,7 +221,7 @@ packages:
 # (e.g., acme-missiles-0.3)
 extra-deps:
 - github: cschank/petri-app-land
-  commit: c6180928d9fcc94da3b94ed60e15bc37deda2c10
+  commit: 56f2c2c032758d57f271abcd25785cad834a9952
 
 # Override default flag values for local packages and extra-deps
 # flags: {}
