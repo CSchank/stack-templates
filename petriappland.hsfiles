@@ -110,7 +110,7 @@ exampleNet =
             Transition
                 OriginClientOnly
                 (constructor "GoToTwo" [])
-                [("FirstPlace", Just ("SecondPlace", constructor "WentToSecondPlace" [], Nothing))
+                [("FirstPlace", Just ("SecondPlace", constructor "WentToSecondPlace" []))
                 ,("SecondPlace", Nothing) --some people will stay
                 ]
                 Nothing
@@ -119,7 +119,7 @@ exampleNet =
             Transition
                 OriginClientOnly
                 (constructor "GoToOne" [])
-                [("SecondPlace", Just ("FirstPlace", constructor "WentToFirstPlace" [], Nothing))
+                [("SecondPlace", Just ("FirstPlace", constructor "WentToFirstPlace" []))
                 ,("SecondPlace", Nothing)
                 ]
                 Nothing
@@ -215,7 +215,9 @@ allow-different-user: true
 #  - wai
 packages:
 - .
-- /petri-app-land # update this with the correct path to the framework
+- location:
+    git: https://github.com/cschank/petri-app-land.git
+    commit: 248486dd2ccefc5e4e1626f477d5e273a54ff841
 # Dependency packages to be pulled from upstream that are not in the resolver
 # using the same syntax as the packages field.
 # (e.g., acme-missiles-0.3)
