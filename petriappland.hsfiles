@@ -29,7 +29,7 @@ library:
   source-dirs: src
 
 executables:
-  {{name}}-exe:
+  pal-exe:
     main:                Main.hs
     source-dirs:         app
     ghc-options:
@@ -40,7 +40,7 @@ executables:
     - {{name}}
 
 tests:
-  {{name}}-test:
+  pal-test:
     main:                Spec.hs
     source-dirs:         test
     ghc-options:
@@ -64,8 +64,14 @@ module Main where
 import Generate
 import ClientServerSpec
 
+--directory to output the generated files, you can change this if you want the project to be in
+--a separate directory
+outputDirectory = "."
+--where the generator is, this shouldn't need to change
+templateRoot = ".templates"
+
 main :: IO ()
-main = generate outputDirectory generatorRoot clientServerApp
+main = generate outputDirectory templateRoot clientServerApp
 
 
 {-# START_FILE README.md #-}
@@ -83,11 +89,6 @@ module ClientServerSpec where
 
 import Types
 import TypeHelpers
-
---directory to output the generated files
-outputDirectory = "."
---where the generator is
-generatorRoot = "../petri-app-land"
 
 exampleNet :: Net
 exampleNet =
