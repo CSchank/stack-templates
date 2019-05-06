@@ -268,7 +268,8 @@ extra-deps:
 
 
 {-# START_FILE .palversion #-}
-0.1.6.0{-# START_FILE .gitignore #-}
+0.1.6.0
+{-# START_FILE .gitignore #-}
 .stack-work/
 *.cabal
 dist
