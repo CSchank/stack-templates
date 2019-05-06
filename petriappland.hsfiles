@@ -69,7 +69,7 @@ main :: IO ()
 main = putStrLn "Test suite not yet implemented"
 
 {-# START_FILE app/update.hs #-}
-module Main where
+module Update where
 
 import Git
 
