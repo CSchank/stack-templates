@@ -39,6 +39,16 @@ executables:
     dependencies:
     - {{name}}
 
+  pal-update:
+    main:                Update.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - {{name}}
+
 tests:
   pal-test:
     main:                Spec.hs
@@ -57,6 +67,14 @@ main = defaultMain
 {-# START_FILE test/Spec.hs #-}
 main :: IO ()
 main = putStrLn "Test suite not yet implemented"
+
+{-# START_FILE app/update.hs #-}
+module Main where
+
+import Git
+
+main :: IO ()
+main = updatePAL
 
 {-# START_FILE app/Main.hs #-}
 module Main where
@@ -221,7 +239,8 @@ packages:
 # (e.g., acme-missiles-0.3)
 extra-deps:
 - github: cschank/petri-app-land
-  commit: aa5164336b0a901b0099b917c1cf5b9b082cf283
+#PALCOMMIT
+  commit: 0.1.1
 
 # Override default flag values for local packages and extra-deps
 # flags: {}
@@ -248,6 +267,8 @@ extra-deps:
 # compiler-check: newer-minor
 
 
+{-# START_FILE .palversion #-}
+0.1.1
 {-# START_FILE .gitignore #-}
 .stack-work/
 *.cabal
