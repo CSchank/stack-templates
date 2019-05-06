@@ -240,7 +240,7 @@ packages:
 extra-deps:
 - github: cschank/petri-app-land
 #PALCOMMIT
-  commit: 0.1.1
+  commit: 0.1.1.0
 
 # Override default flag values for local packages and extra-deps
 # flags: {}
