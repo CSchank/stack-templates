@@ -75,6 +75,7 @@ import Generate
 import ClientServerSpec
 import System.Environment
 import Git
+import qualified Data.Text as T
 import qualified Data.Text.IO as TIO
 
 --directory to output the generated files, you can change this if you want the project to be in
@@ -88,14 +89,16 @@ main = do
     args <- getArgs
     case args of
         [] -> do
-            versionCheck
+            checkVersion
             generate outputDirectory templateRoot clientServerApp
         "update":_ -> updatePAL
         "version":_ -> do
-            version <- TIO.readFile ".palversion"
+            version <- T.unpack <$> TIO.readFile ".palversion"
             putStrLn $ "Version: " ++ version
-            versionCheck
+            checkVersion
         _ -> putStrLn "Invalid option."
+
+
 
 {-# START_FILE README.md #-}
 # {{name}}
