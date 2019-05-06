@@ -68,19 +68,14 @@ main = defaultMain
 main :: IO ()
 main = putStrLn "Test suite not yet implemented"
 
-{-# START_FILE app/update.hs #-}
-module Update where
-
-import Git
-
-main :: IO ()
-main = updatePAL
-
 {-# START_FILE app/Main.hs #-}
 module Main where
 
 import Generate
 import ClientServerSpec
+import System.Environment
+import Git
+import qualified Data.Text.IO as TIO
 
 --directory to output the generated files, you can change this if you want the project to be in
 --a separate directory
@@ -89,8 +84,18 @@ outputDirectory = "."
 templateRoot = ".templates"
 
 main :: IO ()
-main = generate outputDirectory templateRoot clientServerApp
-
+main = do
+    args <- getArgs
+    case args of
+        [] -> do
+            versionCheck
+            generate outputDirectory templateRoot clientServerApp
+        "update":_ -> updatePAL
+        "version":_ -> do
+            version <- TIO.readFile ".palversion"
+            putStrLn $ "Version: " ++ version
+            versionCheck
+        _ -> putStrLn "Invalid option."
 
 {-# START_FILE README.md #-}
 # {{name}}
@@ -240,7 +245,7 @@ packages:
 extra-deps:
 - github: cschank/petri-app-land
 #PALCOMMIT
-  commit: 0.1.8.2
+  commit: 0.1.9.0
 
 # Override default flag values for local packages and extra-deps
 # flags: {}
@@ -268,7 +273,7 @@ extra-deps:
 
 
 {-# START_FILE .palversion #-}
-0.1.8.2
+0.1.9.0
 {-# START_FILE .gitignore #-}
 .stack-work/
 *.cabal
