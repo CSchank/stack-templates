@@ -24,6 +24,7 @@ dependencies:
 - base >= 4.7 && < 5
 - petri-app-land
 - containers
+- text
 
 library:
   source-dirs: src
@@ -31,16 +32,6 @@ library:
 executables:
   pal-exe:
     main:                Main.hs
-    source-dirs:         app
-    ghc-options:
-    - -threaded
-    - -rtsopts
-    - -with-rtsopts=-N
-    dependencies:
-    - {{name}}
-
-  pal-update:
-    main:                Update.hs
     source-dirs:         app
     ghc-options:
     - -threaded
@@ -248,7 +239,7 @@ packages:
 extra-deps:
 - github: cschank/petri-app-land
 #PALCOMMIT
-  commit: 0.1.9.0
+  commit: 0.1.10.0
 
 # Override default flag values for local packages and extra-deps
 # flags: {}
@@ -276,7 +267,7 @@ extra-deps:
 
 
 {-# START_FILE .palversion #-}
-0.1.9.0
+0.1.10.0
 {-# START_FILE .gitignore #-}
 .stack-work/
 *.cabal
