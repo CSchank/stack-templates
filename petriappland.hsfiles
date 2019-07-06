@@ -239,7 +239,7 @@ packages:
 extra-deps:
 - github: cschank/petri-app-land
 #PALCOMMIT
-  commit: 0.1.12.0
+  commit: 0.1.12.1
 
 # Override default flag values for local packages and extra-deps
 # flags: {}
@@ -267,7 +267,7 @@ extra-deps:
 
 
 {-# START_FILE .palversion #-}
-0.1.12.0
+0.1.12.1
 {-# START_FILE .gitignore #-}
 .stack-work/
 *.cabal
